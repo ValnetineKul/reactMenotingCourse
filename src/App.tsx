@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useCallback, useState } from 'react';
+import { Text, Input, Button } from './components';
+import { Counter } from 'containers';
+import styles from './styles.module.scss';
 
 function App() {
+
+  const [inputState, setInputState] = useState('');
+
+  const handleInputChange = useCallback((e) => {
+    setInputState(e.target.value);
+  }, [inputState])
+
+  const handleSearch = useCallback(() => {
+    alert(inputState);
+  }, [inputState])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Text size="xxxl" align="center">Hello World</Text>
+      <Counter />
+      <div className={styles.searchBlock}>
+        <Input
+          value={inputState}
+          onChange={handleInputChange}
+          placeholder="What do you want to watch?"
+          className={styles.input}
+        />
+        <Button onClick={handleSearch} color="red">
+          <Text weight="bold" color="white">SEARCH</Text>
+        </Button>
+      </div>
     </div>
   );
 }
