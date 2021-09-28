@@ -1,0 +1,15 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.header {
+  padding: 0 40px;
+  @include flexbox(center, space-between);
+  margin-top: -55px;
+  transform: translateY(65px);
+}
+
+.header .addBtn {
+  padding: 0 30px;
+  background: rgba(96, 96, 96, 0.68);
+  border-radius: 4px;
+}
