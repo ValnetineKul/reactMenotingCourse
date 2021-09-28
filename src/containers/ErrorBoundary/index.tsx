@@ -1,22 +1,29 @@
-import { Text } from 'components';
-import { FC, PropsWithChildren } from 'react';
+import { Component } from 'react';
 
-type Props = {
-}
-
-const ErrorBoundary: FC<PropsWithChildren<Props>> = ({ children }) => {
-  try {
-    return (
-      <div>
-        {children}
-      </div>
-    )
-  } catch {
-    return (
-      <Text>Something went wrong</Text>
-    )
+class ErrorBoundary extends Component {
+  // @ts-ignore
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
   }
-  
-};
+// @ts-ignore
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+// @ts-ignore
+  componentDidCatch(error, errorInfo) {
+    // @ts-ignore
+    logErrorToMyService(error, errorInfo);
+  }
+
+  render() {
+    // @ts-ignore
+    if (this.state.hasError) {
+      return <h1>Что-то пошло не так.</h1>;
+    }
+
+    return this.props.children; 
+  }
+}
 
 export default ErrorBoundary;
