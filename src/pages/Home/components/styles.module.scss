@@ -1,0 +1,46 @@
+@import '../../../assets/styles/mixins';
+@import '../../../assets/styles/variables';
+
+.banner {
+  background-image: url('../../../assets/img/Bitmap.png');
+  width: 100%;
+  min-height: 400px;
+  padding: 100px;
+  mix-blend-mode: normal;
+  background-size: cover no-repeat;
+}
+
+.search {
+  margin-top: 30px;
+  @include flexbox;
+}
+
+.tabs {
+  width: 80%;
+  & > * {
+    margin: 0 10px;
+  }
+}
+
+.results {
+  padding: 30px;
+}
+
+.resultsFilters {
+  @include flexbox(center, space-around);
+}
+
+.resultsContainer {
+  width: 100%;
+  @include flexbox();
+  flex-wrap: wrap;
+  margin: -20px;
+  
+  & > * {
+    margin: 20px;
+  }
+}
+
+.flexContainer {
+  @include flexbox(center, space-between);
+}

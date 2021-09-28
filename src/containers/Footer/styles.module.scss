@@ -1,0 +1,8 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.footer {
+  padding: 20px 40px;
+  @include flexbox();
+  background: $color-gray;
+}
